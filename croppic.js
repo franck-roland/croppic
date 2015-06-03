@@ -189,7 +189,6 @@
 	            }
 
 				if (that.options.onBeforeImgUpload) that.options.onBeforeImgUpload.call(that);
-
 				that.showLoader();
 				that.imgUploadControl.hide();
 
@@ -220,8 +219,8 @@
 					reader.readAsDataURL(that.form.find('input[type="file"]')[0].files[0]);
 
 				} else {
-
-					formData = new FormData(that.form[0]);
+					formData = new FormData();
+					formData.append(that.form.find('input[type="file"]')[0].name,that.form.find('input[type="file"]')[0].files[0]);
 
 					for (var key in that.options.uploadData) {
 						if( that.options.uploadData.hasOwnProperty(key) ) {
